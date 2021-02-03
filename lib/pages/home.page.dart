@@ -4,66 +4,49 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: EdgeInsets.all(15),
-        color: Color(0xFFF5F5F5),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            SizedBox(
-              height: 60,
-            ),
-            search(),
-            SizedBox(
-              height: 30,
-            ),
-            Text(
-              "Categories",
-              style: TextStyle(
-                fontSize: 30,
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 90,
-              child: categoryList(),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Row(
-              children: [
-                Text(
-                  "Best Selling",
-                  style: TextStyle(
-                    fontSize: 30,
-                  ),
-                ),
-                FlatButton(
-                  onPressed: () => {},
-                  child: Text("See All"),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 350,
-              child: productList(),
-            ),
-          ],
-        ),
-      ),
+      body: homePageMainContainer(),
     );
   }
 }
 
-Widget search() {
+Widget homePageMainContainer() {
+  return SingleChildScrollView(
+    child: Container(
+      padding: EdgeInsets.all(15),
+      color: Color(0xFFF5F5F5),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          space(60),
+          searchBar(),
+          space(30),
+          categoryListHeader(),
+          space(10),
+          Container(
+            height: 90,
+            child: categoryList(),
+          ),
+          space(30),
+          productListHeader(),
+          space(10),
+          Container(
+            height: 350,
+            child: productList(),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget space(double heightValue) {
+  return SizedBox(
+    height: heightValue,
+  );
+}
+
+Widget searchBar() {
   return Container(
-    color: Colors.black.withOpacity(0.1),
     height: 60,
     padding: EdgeInsets.only(left: 20),
     decoration: BoxDecoration(
@@ -97,6 +80,15 @@ Widget search() {
           ),
         ),
       ],
+    ),
+  );
+}
+
+Widget categoryListHeader() {
+  return Text(
+    "Categories",
+    style: TextStyle(
+      fontSize: 30,
     ),
   );
 }
@@ -136,8 +128,32 @@ Widget categoryItem() {
           spreadRadius: 2,
         ),
       ],
+      borderRadius: BorderRadius.all(
+        Radius.circular(128),
+      ),
     ),
-    child: Image.asset('assets/icon-devices.jpg'),
+    child: Image.asset(
+      'assets/icon-devices.jpg',
+      fit: BoxFit.cover,
+    ),
+  );
+}
+
+Widget productListHeader() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Text(
+        "Best Selling",
+        style: TextStyle(
+          fontSize: 30,
+        ),
+      ),
+      FlatButton(
+        onPressed: () => {},
+        child: Text("See All"),
+      ),
+    ],
   );
 }
 
@@ -170,7 +186,7 @@ Widget productItem() {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Image.asset(
-          "assets/product-3.png",
+          "assets/product-3.jpg",
           width: 170,
           height: 170,
           fit: BoxFit.cover,
