@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_training/pages/home.page.dart';
+import 'package:flutter_training/pages/signup.page.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -29,8 +31,12 @@ class LoginPage extends StatelessWidget {
                   ],
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(15),
-                  child: ListView(
+                  padding: EdgeInsets.only(
+                    left: 15,
+                    right: 15,
+                    top: 60,
+                  ),
+                  child: Column(
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -48,7 +54,14 @@ class LoginPage extends StatelessWidget {
                             ],
                           ),
                           FlatButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SignUpPage(),
+                                ),
+                              );
+                            },
                             child: Text("Sign Up"),
                           ),
                         ],
@@ -101,6 +114,7 @@ class LoginPage extends StatelessWidget {
                         height: 10,
                       ),
                       Container(
+                        width: double.infinity,
                         decoration: BoxDecoration(
                           color: Colors.blue,
                           borderRadius: BorderRadius.all(
@@ -108,7 +122,14 @@ class LoginPage extends StatelessWidget {
                           ),
                         ),
                         child: FlatButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HomePage(),
+                              ),
+                            );
+                          },
                           child: Text(
                             "Sign In",
                             style: TextStyle(color: Colors.white),

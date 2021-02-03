@@ -77,3 +77,7 @@ flutter:
   assets:
     - assets/google-logo.png
     - assets/small-facebook-icon.png
+    - assets/icon-devices.jpg
+    - assets/product-1.jpeg
+    - assets/product-2.jpg
+    - assets/product-3.jpg
