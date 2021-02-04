@@ -1,15 +1,18 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_training/pages/product.page.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: homePageMainContainer(),
+      body: homePageMainContainer(context),
     );
   }
 }
 
-Widget homePageMainContainer() {
+Widget homePageMainContainer(BuildContext context) {
   return SingleChildScrollView(
     child: Container(
       padding: EdgeInsets.all(15),
@@ -31,7 +34,7 @@ Widget homePageMainContainer() {
           space(10),
           Container(
             height: 350,
-            child: productList(),
+            child: productList(context),
           ),
         ],
       ),
@@ -157,26 +160,26 @@ Widget productListHeader() {
   );
 }
 
-Widget productList() {
+Widget productList(BuildContext context) {
   return Container(
     child: ListView(
       scrollDirection: Axis.horizontal,
       children: [
-        productItem(),
-        productItem(),
-        productItem(),
-        productItem(),
-        productItem(),
-        productItem(),
-        productItem(),
-        productItem(),
-        productItem(),
+        productItem(context),
+        productItem(context),
+        productItem(context),
+        productItem(context),
+        productItem(context),
+        productItem(context),
+        productItem(context),
+        productItem(context),
+        productItem(context),
       ],
     ),
   );
 }
 
-Widget productItem() {
+Widget productItem(BuildContext context) {
   return Container(
     padding: EdgeInsets.all(10),
     margin: EdgeInsets.all(5),
@@ -185,11 +188,21 @@ Widget productItem() {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image.asset(
-          "assets/product-3.jpg",
-          width: 170,
-          height: 170,
-          fit: BoxFit.cover,
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ProductPage(),
+              ),
+            );
+          },
+          child: Image.asset(
+            "assets/product-3.jpg",
+            width: 170,
+            height: 170,
+            fit: BoxFit.cover,
+          ),
         ),
         SizedBox(
           height: 10,
